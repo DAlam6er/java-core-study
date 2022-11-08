@@ -1,0 +1,11 @@
+# Ignore all files ending with
+**.iml
+**.txt
+**.jrtc
+**.ser
+**.bin
+!*.java
+
+/.idea/
+/out/
+/core/resources
