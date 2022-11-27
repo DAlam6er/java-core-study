@@ -14,6 +14,7 @@ public final class ConnectionPool
     private static final String PASSWORD_KEY = "db.password";
     private static final String USERNAME_KEY = "db.username";
     private static final String URL_KEY = "db.url";
+    private static final String DRIVER_KEY = "db.driver";
     private static final Integer DEFAULT_POOL_SIZE = 10;
     private static final String POOL_SIZE_KEY = "db.pool.size";
 
@@ -31,7 +32,7 @@ public final class ConnectionPool
     private static void loadDriver()
     {
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName(PropertiesUtil.get(DRIVER_KEY));
         } catch (ClassNotFoundException e) {
             // обязаны пробросить исключение, чтобы прекратить дальнейшее выполнение
             throw new RuntimeException(e);
@@ -52,7 +53,7 @@ public final class ConnectionPool
                 ConnectionPool.class.getClassLoader(),
                 new Class[]{Connection.class},
                 (proxy, method, args) -> method.getName().equals("close")
-                    ? pool.add(connection)
+                    ? pool.add((Connection)proxy)
                     : method.invoke(connection, args));
 
             pool.add(proxyConnection);
