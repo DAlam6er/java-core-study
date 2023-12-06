@@ -15,8 +15,8 @@ public class Task2 {
     var stringAngle = new Scanner(System.in).nextLine();
     if (Task1.isNumeric(stringAngle)) {
       var angle = Integer.parseInt(stringAngle);
-      //System.out.println("Нормализованное значение угла: " + normalizeWithPercentOperation(angle));
-      System.out.println("Нормализованное значение угла: " + normalizeWithFloorMod(angle));
+      System.out.println("Нормализованное значение угла с помощью операции %: " + normalizeWithPercentOperation(angle));
+      System.out.println("Нормализованное значение угла с помощью метода floorMod(): " + normalizeWithFloorMod(angle));
     }
   }
 

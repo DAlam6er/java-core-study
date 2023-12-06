@@ -15,11 +15,12 @@ import java.util.Scanner;
  * 5  10 11  8
  * 9   6  7 12
  * 4  15 14  1
+ * программа должна ответить утвердительно
  */
 public class Task14 {
   public static void main(String[] args) {
     System.out.println("Введите двумерный массив, разделяя числа пробелами. Для окончания ввода введите пустую строку.");
-    int[][] twoDimArray = fillArray();
+    int[][] twoDimArray = getFilledArray();
     if (isMagic(twoDimArray)) {
       System.out.println("Двумерный массив содержит магический квадрат");
     } else {
@@ -27,60 +28,52 @@ public class Task14 {
     }
   }
 
-  private static boolean isMagic(int[][] twoDimArray) {
-    long baseLineSum = getLineSum(twoDimArray, 0);
-    int baseLineSize = twoDimArray[0].length;
+  private static boolean isMagic(int[][] arrayOfRows) {
+    long baseLineSum = getLineSum(arrayOfRows, 0);
+    int baseLineSize = arrayOfRows[0].length;
 
-    for (int i = 1; i < twoDimArray.length; i++) {
-      if (twoDimArray[i].length != baseLineSize) {
+    for (int i = 1; i < arrayOfRows.length; i++) {
+      if (arrayOfRows[i].length != baseLineSize) {
         return false;
       }
-      long currentLineSum = getLineSum(twoDimArray, i);
+      long currentLineSum = getLineSum(arrayOfRows, i);
       if (currentLineSum != baseLineSum) {
         return false;
       }
     }
 
-    long baseColumnSum = getColumnSum(twoDimArray, 0);
+    long baseColumnSum = getColumnSum(arrayOfRows, 0);
 
-    for (int i = 1; i < twoDimArray.length; i++) {
-      long currentColumnSum = getColumnSum(twoDimArray, i);
+    for (int i = 1; i < arrayOfRows.length; i++) {
+      long currentColumnSum = getColumnSum(arrayOfRows, i);
       if (currentColumnSum != baseColumnSum) {
         return false;
       }
     }
 
-    return getMainDiagonalSum(twoDimArray) == getAntiDiagonalSum(twoDimArray);
+    return getMainDiagonalSum(arrayOfRows) == getAntiDiagonalSum(arrayOfRows);
   }
 
   private static long getMainDiagonalSum(int[][] twoDimArray) {
     long result = 0;
-    int i = 0;
-    int j = 0;
-    for (int k = 0; k < twoDimArray.length; k++) {
-      result = result + twoDimArray[i][j];
-      i++;
-      j++;
+    for (int i = 0, j = 0, k = 0; k < twoDimArray.length; k++) {
+      result = result + twoDimArray[i++][j++];
     }
     return result;
   }
 
   private static long getAntiDiagonalSum(int[][] twoDimArray) {
     long result = 0;
-    int i = 0;
-    int j = twoDimArray[0].length - 1;
-    for (int k = 0; k < twoDimArray.length; k++) {
-      result = result + twoDimArray[i][j];
-      i++;
-      j--;
+    for (int i = 0, j = twoDimArray[0].length - 1, k = 0; k < twoDimArray.length; k++) {
+      result = result + twoDimArray[i++][j--];
     }
     return result;
   }
 
-  private static long getColumnSum(int[][] twoDimArray, int columnNumber) {
+  private static long getColumnSum(int[][] arrayOfRows, int columnNumber) {
     long result = 0;
-    for (int i = 0; i < twoDimArray.length; i++) {
-      result = result + twoDimArray[i][columnNumber];
+    for (int[] ints : arrayOfRows) {
+      result = result + ints[columnNumber];
     }
     return result;
   }
@@ -93,7 +86,7 @@ public class Task14 {
     return result;
   }
 
-  private static int[][] fillArray() {
+  private static int[][] getFilledArray() {
     Scanner scanner = new Scanner(System.in);
     List<String> input = new ArrayList<>();
     for (; ; ) {

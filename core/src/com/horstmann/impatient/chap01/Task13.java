@@ -13,9 +13,12 @@ import java.util.Random;
  * Выведите полученный результат в отсортированном порядке.
  */
 public class Task13 {
+  private static final Integer START_VALUE = 1;
+  private static final Integer FINAL_VALUE = 49;
+  private static final Integer COMBINATION_SIZE = 6;
   public static void main(String[] args) {
-    List<Integer> integers = fillList(1, 49);
-    List<Integer> combination = new ArrayList<>(6);
+    List<Integer> integers = fillList();
+    List<Integer> combination = new ArrayList<>(COMBINATION_SIZE);
     for (int i = 0; i < 6; i++) {
       combination.add(integers.remove(new Random().nextInt(integers.size())));
     }
@@ -24,10 +27,10 @@ public class Task13 {
     System.out.println("Выигрышная комбинация: " + combination);
   }
 
-  private static List<Integer> fillList(int startValue, int endValue) {
-    List<Integer> newList = new ArrayList<>(endValue);
-    for (int i = 0; i < endValue; ) {
-      int newNumber = new Random().nextInt(endValue) + 1;
+  private static List<Integer> fillList() {
+    List<Integer> newList = new ArrayList<>(FINAL_VALUE);
+    for (int i = 0; i < FINAL_VALUE; ) {
+      int newNumber = new Random().nextInt(FINAL_VALUE) + START_VALUE;
       if (!newList.contains(newNumber)) {
         newList.add(newNumber);
         i++;

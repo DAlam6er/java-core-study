@@ -22,7 +22,7 @@ public class Task1 {
   }
 
   public static boolean isNumeric(String value) {
-    if (value.length() == 0) {
+    if (value.isEmpty()) {
       return false;
     }
 

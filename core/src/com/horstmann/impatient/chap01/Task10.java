@@ -9,6 +9,6 @@ import java.util.Random;
 public class Task10 {
   public static void main(String[] args) {
     var random = new Random().nextLong();
-    System.out.println(Long.toString(random, 36));
+    System.out.println(Long.toString(random, 36).toUpperCase());
   }
 }

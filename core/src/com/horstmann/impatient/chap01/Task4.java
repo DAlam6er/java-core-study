@@ -7,7 +7,10 @@ package com.horstmann.impatient.chap01;
  */
 public class Task4 {
   public static void main(String[] args) {
-    System.out.println(Double.MAX_VALUE);
-    System.out.println(Double.MIN_VALUE);
+    System.out.println("Наибольшее положительное значение типа integer: " + Integer.MAX_VALUE);
+    System.out.println("Наименьшее отрицательное значение типа integer: " + Integer.MIN_VALUE);
+    System.out.println("Наибольшее положительное значение типа double: " + Double.MAX_VALUE);
+    System.out.println("Наименьшее положительное значение типа double: " + Double.MIN_VALUE);
+    System.out.println("Наименьшее отрицательное значение типа double: " + (0 - Double.MAX_VALUE));
   }
 }

@@ -6,13 +6,13 @@ import java.util.List;
 
 /**
  * Напишите программу, сохраняющую треугольник Паскаля вплоть до заданной величины n
- * в переменной типа ArrayList<ArrayList<Integer>>
+ * в переменной типа ArrayList&lt;ArrayList&lt;Integer&gt;&gt;
  */
 public class Task15 {
+  private static final Integer TRIANGLE_SIZE = 13;
   public static void main(String[] args) {
-    int n = 13;
-    ArrayList<ArrayList<Integer>> triangle = getPascalTriangle(n);
-    System.out.println("Треугольник Паскаля величины " + n);
+    ArrayList<ArrayList<Integer>> triangle = getPascalTriangle(TRIANGLE_SIZE);
+    System.out.println("Треугольник Паскаля величины " + TRIANGLE_SIZE);
     for (ArrayList<Integer> elements : triangle) {
       for (Integer element : elements) {
         System.out.printf("%4s ", element);
