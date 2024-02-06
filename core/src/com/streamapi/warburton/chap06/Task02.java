@@ -21,8 +21,8 @@ public class Task02 {
         .reduce(5, (acc, x) -> x * acc);
   }
 
-  private static int parallelMultiplyThrough(List<Integer> list) {
-    return list.parallelStream()
-        .reduce(1, (acc, x) -> x * acc) * 5;
+  private static int parallelMultiplyThrough(List<Integer> numbers) {
+    return 5 * numbers.parallelStream()
+        .reduce(1, (acc, x) -> x * acc);
   }
 }

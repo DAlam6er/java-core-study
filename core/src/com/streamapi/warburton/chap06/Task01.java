@@ -13,15 +13,13 @@ public class Task01 {
   }
 
   private static int parallelSumOfSquares(IntStream range) {
-    return range
-        .parallel()
+    return range.parallel()
         .map(x -> x * x)
         .sum();
   }
 
   public static int sequentialSumOfSquares(IntStream range) {
-    return range
-        .map(x -> x * x)
+    return range.map(x -> x * x)
         .sum();
   }
 }

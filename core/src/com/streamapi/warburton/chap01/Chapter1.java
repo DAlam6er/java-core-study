@@ -30,5 +30,4 @@ public class Chapter1 extends MusicChapter {
         .filter(artist -> "London".equals(artist.getNationality()))
         .collect(Collectors.toList());
   }
-
 }
